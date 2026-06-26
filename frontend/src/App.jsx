@@ -9,7 +9,7 @@ function App() {
 
     async function generateLetter() {
         setLoading(true)
-        let response = await fetch("https://cover-letter-ai-production-26c9.up.railway.app/api/generate", {
+        let response = await fetch("https://cover-letter-ai-production-ad6b.up.railway.app/api/generate", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ experience, job_description: jobDescription })
