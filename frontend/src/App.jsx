@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./App.css"
 
 function App() {
     let [experience, setExperience] = useState("")
@@ -19,29 +20,30 @@ function App() {
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>Cover Letter Generator</h1>
-            <textarea
-                placeholder="Paste your experience / CV"
-                value={experience}
-                onChange={(e) => setExperience(e.target.value)}
-                rows={8}
-                cols={60}
-            />
-            <br />
-            <textarea
-                placeholder="Paste the job description"
-                value={jobDescription}
-                onChange={(e) => setJobDescription(e.target.value)}
-                rows={8}
-                cols={60}
-            />
-            <br />
-            <button onClick={generateLetter} disabled={loading}>
+            <p className="subtitle">Paste your CV and job description — get a tailored cover letter in seconds.</p>
+            <div className="inputs">
+                <textarea
+                    className="input-box"
+                    placeholder="Paste your experience / CV"
+                    value={experience}
+                    onChange={(e) => setExperience(e.target.value)}
+                    rows={10}
+                />
+                <textarea
+                    className="input-box"
+                    placeholder="Paste the job description"
+                    value={jobDescription}
+                    onChange={(e) => setJobDescription(e.target.value)}
+                    rows={10}
+                />
+            </div>
+            <button className="btn" onClick={generateLetter} disabled={loading}>
                 {loading ? "Generating..." : "Generate Cover Letter"}
             </button>
             {letter && (
-                <div>
+                <div className="result">
                     <h2>Your Cover Letter</h2>
                     <p>{letter}</p>
                 </div>
