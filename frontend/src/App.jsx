@@ -10,8 +10,9 @@ function App() {
     async function generateLetter() {
         setLoading(true)
         let response = await fetch("https://cover-letter-ai-30c0.onrender.com/api/generate", {
+        method : "POST",
         headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ experience, job_description: jobDescription })
+        body: JSON.stringify({ experience, job_description: jobDescription })
         })
         let data = await response.json()
         setLetter(data.letter)
