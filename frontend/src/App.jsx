@@ -29,6 +29,14 @@ function App() {
 
         const order = await orderResponse.json();
 
+        if (!orderResponse.ok) {
+    alert(order.error || "Unable to create payment.");
+    setLoading(false);
+    return;
+}
+
+        
+
         const options = {
             key: order.key,
             amount: order.amount,
@@ -59,6 +67,13 @@ function App() {
                     }
                 );
 
+                if (!generateResponse.ok) {
+    alert("Payment verified but generation failed.");
+    setLoading(false);
+    return;
+}
+
+
                 const result = await generateResponse.json();
 
                 if (result.success) {
@@ -71,8 +86,14 @@ function App() {
             },
 
             theme: {
-                color: "#2563eb"
-            }
+    color: "#2563eb"
+},
+
+modal: {
+    ondismiss: function () {
+        setLoading(false);
+    }
+}
         };
 
         const razorpay = new window.Razorpay(options);
@@ -121,4 +142,4 @@ function App() {
     )
 }
 
-export default App
+export default App 
