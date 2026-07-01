@@ -102,7 +102,7 @@ modal: {
     } catch (err) {
 
         console.error(err);
-        alert("Something went wrong.");
+        alert(err.message);
         setLoading(false);
 
     }
